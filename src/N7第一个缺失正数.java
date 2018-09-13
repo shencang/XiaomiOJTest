@@ -107,7 +107,7 @@ public class N7第一个缺失正数 {
     public static void main(String[] args) {
 
 
-        System.out.println(solution("-1,-10,0"));
+        System.out.println(solution("2,3,1"));
 
 
     }
