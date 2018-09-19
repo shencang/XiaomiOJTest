@@ -23,16 +23,24 @@ public class N13出现频率最高的前K个元素 {
         String numArray = array[0];
         String nums = array[1];
         int n = Integer.parseInt(nums);
+        int down = -1;
         String[] sa = numArray.split(",");
         int[] intArray = new int[sa.length];
+        int[] intArrays = new int[sa.length];
         for (int i = 0; i < sa.length; i++) {
-            intArray[i] = Integer.parseInt(array[i]);
+            intArray[i] = Integer.parseInt(sa[i]);
         }
-
         intArray = HeapSort(intArray, intArray.length);
 
 
-        return "";
+        for (int i = 0; i < intArray.length; i++) {
+
+            if (intArray[i] != down) {
+                // intArray[i];
+            }
+            // result=result+intArray[i]+" ";
+        }
+        return result;
     }
 
 
