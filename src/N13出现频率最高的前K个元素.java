@@ -1,3 +1,5 @@
+import java.util.*;
+
 /*描述
         有一个不为空且仅包含正整数的数组，找出其中出现频率最高的前 K 个数，时间复杂度必须在 O(n log n) 以内。
 
@@ -26,83 +28,44 @@ public class N13出现频率最高的前K个元素 {
         int down = -1;
         String[] sa = numArray.split(",");
         int[] intArray = new int[sa.length];
-        int[] intArrays = new int[sa.length];
+        int[][] intArrays = new int[sa.length][sa.length];
         for (int i = 0; i < sa.length; i++) {
             intArray[i] = Integer.parseInt(sa[i]);
         }
-        intArray = HeapSort(intArray, intArray.length);
-
-
-        for (int i = 0; i < intArray.length; i++) {
-
-            if (intArray[i] != down) {
-                // intArray[i];
-            }
-            // result=result+intArray[i]+" ";
-        }
+        System.out.println(topKFrequent2(intArray, n).size());
         return result;
     }
 
-
-    /*返回父节点*/
-    static int parent(int i) {
-        return (int) java.lang.Math.floor((i - 1) / 2);
-    }
-
-    /*返回左孩子节点*/
-    static int left(int i) {
-        return (2 * i + 1);
-    }
-
-    /*返回右孩子节点*/
-    static int right(int i) {
-        return (2 * i + 2);
-    }
-
-    /*对以某一节点为根的子树做堆调整(保证最大堆性质)*/
-    static void HeapAdjust(int A[], int i, int heap_size) {
-        int l = left(i);
-        int r = right(i);
-        int largest;
-        int temp;
-        if (l < heap_size && A[l] > A[i]) {
-            largest = l;
-        } else {
-            largest = i;
+    public static List<Integer> topKFrequent2(int[] nums, int k) {
+        List<Integer> res = new LinkedList<Integer>();
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (int num : nums) {
+            if (map.get(num) == null)
+                map.put(num, 1);
+            else
+                map.put(num, (int) (map.get(num)) + 1);
         }
-        if (r < heap_size && A[r] > A[largest]) {
-            largest = r;
+        int len = nums.length;
+        ArrayList<Integer>[] times = new ArrayList[len + 1];
+        Set<Integer> set = map.keySet();
+        Iterator<Integer> it = set.iterator();
+        while (it.hasNext()) {
+            int num = it.next();
+            int time = map.get(num);
+            if (times[time] == null)
+                times[time] = new ArrayList<>();
+            times[map.get(num)].add(num);
         }
-        if (largest != i) {
-            temp = A[i];
-            A[i] = A[largest];
-            A[largest] = temp;
-            HeapAdjust(A, largest, heap_size);
-        }
+        for (int i = len; i >= 0; i--)
+            if (times[i] != null) {
+                it = times[i].iterator();
+                while (k > 0 && it.hasNext()) {
+                    res.add(it.next());
+                    k--;
+                }
+            }
+        return res;
     }
-
-    /*建立最大堆*/
-    static void BuildHeap(int A[], int heap_size) {
-        for (int i = (heap_size - 2) / 2; i >= 0; i--) {
-            HeapAdjust(A, i, heap_size);
-        }
-    }
-
-
-    /*堆排序*/
-    static int[] HeapSort(int A[], int heap_size) {
-        BuildHeap(A, heap_size);
-        int temp;
-        for (int i = heap_size - 1; i >= 0; i--) {
-            temp = A[0];
-            A[0] = A[i];
-            A[i] = temp;
-            HeapAdjust(A, 0, i);
-        }
-        // print(A, heap_size);
-        return A;
-    }
-
 
     public static void main(String[] args) {
 
