@@ -19,7 +19,7 @@ import java.util.*;
 public class N13出现频率最高的前K个元素 {
 
     private static String solution(String line) {
-
+        List<Integer> res = new LinkedList<Integer>();
         String[] array = line.split(" ");
         String result = "";
         String numArray = array[0];
@@ -32,7 +32,15 @@ public class N13出现频率最高的前K个元素 {
         for (int i = 0; i < sa.length; i++) {
             intArray[i] = Integer.parseInt(sa[i]);
         }
-        System.out.println(topKFrequent2(intArray, n).size());
+        res = topKFrequent2(intArray, n);
+
+        for (int i = 0; i < res.size(); i++) {
+            result = result + res.get(i);
+            if (i != res.size() - 1) {
+                result = result + ",";
+            }
+        }
+        // System.out.println(res.get(0)+res.get(1));
         return result;
     }
 
