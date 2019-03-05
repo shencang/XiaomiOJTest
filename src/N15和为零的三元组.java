@@ -24,6 +24,7 @@ public class N15和为零的三元组 {
     private static String solution(String line) {
         // 在此处理单行数据
         List<Integer> numList = new ArrayList<>();
+        List<Integer> zeroList = new ArrayList<>();
         for (String i : line.split(",")) {
             numList.add(Integer.parseInt(i));
         }
@@ -31,29 +32,33 @@ public class N15和为零的三元组 {
         System.out.println(numList);
         //-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6正确6，结果11，待修改
         int count = 0;
-        if (numList.contains(0)) {
-            for (int i = 0; i < numList.indexOf(0); i++) {
-                for (int j = i + 1; j <= (numList.size() - 1); j++) {
-                    if (numList.get(i) + (numList.get(j)) == 0) {
-                        count++;
-                    }
-                }
-            }
-
-        } else {
+//        if (numList.contains(0)) {
+//            for (int i = 0; i < numList.indexOf(0); i++) {
+//                for (int j = i + 1; j <= (numList.size() - 1); j++) {
+//                    if (numList.get(i) + (numList.get(j)) == 0) {
+//                        count++;
+//                    }
+//                }
+//            }
+//
+//        } else {
             for (int i = 0; i < numList.size() - 1; i++) {
                 for (int j = i + 1; j <= numList.size() - 1; j++) {
                     for (int k = j + 1; k <= numList.size() - 1; k++) {
                         if (numList.get(j) + (numList.get(k)) == 0) {
                             count++;
+                            zeroList.add(i);
+                            zeroList.add(j);
+                            zeroList.add(k);
                         }
                     }
 
                 }
-            }
+//            }
 
 
         }
+            System.out.println(zeroList);
         return Integer.toString(count);
 
 
