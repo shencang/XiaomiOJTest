@@ -30,7 +30,7 @@ public class N16四则运算 {
      * 小提示
      * 可以使用栈来解决此类问题。
      */
-        private static String solution(String line) {
+        private static String solution(String line,String S) {
             // 在此处理单行数据
             String[] array = line.split(" ");
             System.out.println(array.length);
@@ -40,7 +40,55 @@ public class N16四则运算 {
         }
 
 
-        public static void main(String args[]) {
+    public static String  solution(String line)
+    {
+        Stack<String> stack = new Stack<String>();
+        String []array = line.split(" ");
+        for(int i = 0;i<array.length;i++)
+        {
+            if(array[i].equals("/"))
+            {
+                if(array[i+1].equals("0"))
+                    return "err";
+                stack.add(String.valueOf(Integer.parseInt(stack.pop())/Integer.parseInt(array[++i])));
+            }
+            else if(array[i].equals("*"))
+                stack.add(String.valueOf(Integer.parseInt(stack.pop())*Integer.parseInt(array[++i])));
+
+            else
+                stack.add(array[i]);
+        }
+        int[] a1 = new int[(stack.size()+1)/2];
+        int flag =0;
+        int temp=0;
+        int sum=0;
+        int m =stack.size();
+        for(int i = 0;i<m;i++)
+        {
+            if(flag==0)
+            {a1[temp++] = Integer.parseInt(stack.pop());
+                flag =1;}
+            else
+            {
+                if(stack.pop().equals("+"))
+                {sum+=a1[temp-1];
+                    flag =0;}
+                else
+                {sum-=a1[temp-1];
+                    flag =0;
+                }
+
+            }
+        }
+        sum+=a1[a1.length-1];
+
+
+        return String.valueOf(sum);
+    }
+
+
+
+    public static void main(String args[]) {
             Scanner scan = new Scanner(System.in);
             String line;
             while (scan.hasNextLine()) {
