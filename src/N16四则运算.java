@@ -1,3 +1,4 @@
+import java.util.*;
 public class N16四则运算 {
     //新设备测试
     /**
@@ -18,7 +19,7 @@ public class N16四则运算 {
      * 1 / 2
      * 1 / 0
      * 12 + 34 * 56 - 78
-     *
+     * V
      * 输出样例
      * 8
      * 17
@@ -29,4 +30,28 @@ public class N16四则运算 {
      * 小提示
      * 可以使用栈来解决此类问题。
      */
-}
+        private static String solution(String line) {
+            // 在此处理单行数据
+            String[] array = line.split(" ");
+            System.out.println(array.length);
+
+
+            return "1";
+        }
+
+
+        public static void main(String args[]) {
+            Scanner scan = new Scanner(System.in);
+            String line;
+            while (scan.hasNextLine()) {
+                line = scan.nextLine().trim();
+                // please write your code here
+                System.out.println(solution(line));
+                System.out.println("No16");
+                // System.out.println("answer");
+            }
+
+        }
+    }
+
+
