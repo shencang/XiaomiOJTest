@@ -38,8 +38,87 @@ public class N17小写数字转大写数字 {
         while (scan.hasNextLine()) {
             line = scan.nextLine().trim();
             // please write your code here
+            System.out.println(solution(line));
 
             // System.out.println("answer");
         }
     }
+
+    private static String solution(String line) {
+        // 在此处理单行数据
+        boolean flagBY=true;
+        boolean flagSY=true;
+        boolean flagY=true;
+        boolean flagW=true;
+        boolean flagK=true;
+        boolean flagB=true;
+        boolean flagS=true;
+        List<String>listCh= new ArrayList<String>();
+        char []count = line.toCharArray();
+        for (int i =0;i<count.length;i++){
+
+            switch (count[i]){
+                case '1':listCh.add("壹");break;
+                case '2':listCh.add("贰");break;
+                case '3':listCh.add("叁");break;
+                case '4':listCh.add("肆");break;
+                case '5':listCh.add("伍");break;
+                case '6':listCh.add("陆");break;
+                case '7':listCh.add("柒");break;
+                case '8':listCh.add("捌");break;
+                case '9':listCh.add("玖");break;
+                case '0':
+                    if (i<count.length-1&&count[i+1]=='0'){
+                        break;
+                    }
+                    listCh.add("零");break;
+
+            }
+            if (count.length>10&&flagBY==true){
+                listCh.add("百");
+                flagBY=false;
+                continue;
+            }
+            if (count.length>9&&flagSY==true){
+                listCh.add("拾");
+                flagSY=false;
+                continue;
+            }
+            if (count.length>8&&flagY==true){
+                listCh.add("亿");
+                flagY=false;
+                continue;
+            }
+            if (count.length>4&&flagW==true){
+                listCh.add("万");
+                flagW=false;
+                continue;
+            }
+            if (count.length>3&&flagK==true){
+                listCh.add("仟");
+                flagK=false;
+                continue;
+            }
+            if (count.length>2&&flagB==true){
+                listCh.add("百");
+                flagB=false;
+                continue;
+            }
+            if (count.length>1&&flagS==true){
+                listCh.add("拾");
+                flagS=false;
+                continue;
+            }
+
+        }
+        return result(listCh);
+    }
+    public static  String result(List<String> S){
+        String s="";
+        for (String c:S){
+            s=s+c;
+        }
+        return s+"元整";
+    }
+
 }
