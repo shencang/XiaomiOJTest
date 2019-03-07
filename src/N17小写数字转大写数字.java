@@ -49,6 +49,9 @@ public class N17小写数字转大写数字 {
         boolean flagBY=true;
         boolean flagSY=true;
         boolean flagY=true;
+        boolean flagKW=true;
+        boolean flagBW=true;
+        boolean flagSW=true;
         boolean flagW=true;
         boolean flagK=true;
         boolean flagB=true;
@@ -71,6 +74,9 @@ public class N17小写数字转大写数字 {
                     if (i<count.length-1&&count[i+1]=='0'){
                         break;
                     }
+                    if (i==count.length-1&&count[i]=='0'){
+                        break;
+                    }
                     listCh.add("零");break;
 
             }
@@ -87,6 +93,21 @@ public class N17小写数字转大写数字 {
             if (count.length>8&&flagY==true){
                 listCh.add("亿");
                 flagY=false;
+                continue;
+            }
+            if (count.length>7&&flagKW==true){
+                listCh.add("仟");
+                flagKW=false;
+                continue;
+            }
+            if (count.length>6&&flagBW==true){
+                listCh.add("百");
+                flagBW=false;
+                continue;
+            }
+            if (count.length>5&&flagSW==true){
+                listCh.add("拾");
+                flagSW=false;
                 continue;
             }
             if (count.length>4&&flagW==true){
