@@ -32,7 +32,7 @@ public class N17小写数字转大写数字 {
      * 肆万零陆佰零柒元整
      * 捌拾玖亿元整
      */
-    public static void main(String args[]) {
+    public static void main(String []args) {
         Scanner scan = new Scanner(System.in);
         String line;
         while (scan.hasNextLine()) {
@@ -40,23 +40,16 @@ public class N17小写数字转大写数字 {
             // please write your code here
             System.out.println(solution(line));
 
+            System.out.println("测试：");
             // System.out.println("answer");
         }
     }
 
     private static String solution(String line) {
         // 在此处理单行数据
-        boolean flagBY = true;
-        boolean flagSY = true;
-        boolean flagY = true;
-        boolean flagKW = true;
-        boolean flagBW = true;
-        boolean flagSW = true;
-        boolean flagW = true;
-        boolean flagK = true;
-        boolean flagB = true;
-        boolean flagS = true;
-        boolean flagQSA = true;
+        boolean flagBY = true,flagSY = true,flagY = true,flagKW = true,
+                flagBW = true,flagSW = true,flagW = true, flagK = true,
+                flagB = true,flagS = true,flagQSA = true;
         List<String> listCh = new ArrayList<String>();
         char[] count = line.toCharArray();
         for (int i = 0; i < count.length; i++) {
@@ -100,11 +93,11 @@ public class N17小写数字转大写数字 {
                         break;
 
                     }
-//                    if (i<count.length-1&&count[i]=='0'&&count[i+1]!='0'&&count[i-1]!='0'){
-//                        flagQSA=false;
-//                        break;
-//
-//                    }
+                    if (i<count.length-2&&count[i]!='0'&&count[i+1]=='0'&&count[i+2]!='0'){
+                        flagQSA=false;
+                        break;
+
+                    }
                     listCh.add("零");
                     break;
 
@@ -113,52 +106,52 @@ public class N17小写数字转大写数字 {
                 listCh.add("零");
             }
 
-            if (count.length > 10 && flagBY == true && flagQSA == true) {
-                listCh.add("百");
+            if (count.length > 10 && flagBY && flagQSA ) {
+                listCh.add("佰");
                 flagBY = false;
                 continue;
             }
-            if (count.length > 9 && flagSY == true && flagQSA == true) {
+            if (count.length > 9 && flagSY && flagQSA) {
                 listCh.add("拾");
                 flagSY = false;
                 continue;
             }
-            if (count.length > 8 && flagY == true && flagQSA == true) {
+            if (count.length > 8 && flagY && flagQSA) {
                 listCh.add("亿");
                 flagY = false;
                 continue;
             }
-            if (count.length > 7 && flagKW == true && flagQSA == true) {
+            if (count.length > 7 && flagKW && flagQSA) {
                 listCh.add("仟");
                 flagKW = false;
                 continue;
             }
-            if (count.length > 6 && flagBW == true && flagQSA == true) {
-                listCh.add("百");
+            if (count.length > 6 && flagBW && flagQSA) {
+                listCh.add("佰");
                 flagBW = false;
                 continue;
             }
-            if (count.length > 5 && flagSW == true && flagQSA == true) {
+            if (count.length > 5 && flagSW && flagQSA) {
                 listCh.add("拾");
                 flagSW = false;
                 continue;
             }
-            if (count.length > 4 && flagW == true && flagQSA == true) {
+            if (count.length > 4 && flagW && flagQSA) {
                 listCh.add("万");
                 flagW = false;
                 continue;
             }
-            if (count.length > 3 && flagK == true && flagQSA == true) {
+            if (count.length > 3 && flagK && flagQSA ) {
                 listCh.add("仟");
                 flagK = false;
                 continue;
             }
-            if (count.length > 2 && flagB == true && flagQSA == true) {
-                listCh.add("百");
+            if (count.length > 2 && flagB && flagQSA) {
+                listCh.add("佰");
                 flagB = false;
                 continue;
             }
-            if (count.length > 1 && flagS == true && flagQSA == true) {
+            if (count.length > 1 && flagS && flagQSA) {
                 listCh.add("拾");
                 flagS = false;
                 continue;
