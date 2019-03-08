@@ -1,4 +1,4 @@
- import  java.util.*;
+import java.util.*;
 
 public class N17小写数字转大写数字 {
     /**
@@ -9,13 +9,13 @@ public class N17小写数字转大写数字 {
      * 描述
      * 实现一个算法，可以将小写数字转换成大写数字。
      * 输入
-     *
+     * <p>
      * 输入一个整数。范围在0～450亿之间。
-     *
+     * <p>
      * 输出
-     *
+     * <p>
      * 输出对应的大写数字，以“元整”结尾。 大写数字要符合汉语读写习惯。
-     *
+     * <p>
      * 输入样例
      * 0
      * 5
@@ -23,7 +23,7 @@ public class N17小写数字转大写数字 {
      * 1001
      * 40607
      * 8900000000
-     *
+     * <p>
      * 输出样例
      * 零元整
      * 伍元整
@@ -46,105 +46,134 @@ public class N17小写数字转大写数字 {
 
     private static String solution(String line) {
         // 在此处理单行数据
-        boolean flagBY=true;
-        boolean flagSY=true;
-        boolean flagY=true;
-        boolean flagKW=true;
-        boolean flagBW=true;
-        boolean flagSW=true;
-        boolean flagW=true;
-        boolean flagK=true;
-        boolean flagB=true;
-        boolean flagS=true;
-        boolean flagQSA=true;
-        List<String>listCh= new ArrayList<String>();
-        char []count = line.toCharArray();
-        for (int i =0;i<count.length;i++){
+        boolean flagBY = true;
+        boolean flagSY = true;
+        boolean flagY = true;
+        boolean flagKW = true;
+        boolean flagBW = true;
+        boolean flagSW = true;
+        boolean flagW = true;
+        boolean flagK = true;
+        boolean flagB = true;
+        boolean flagS = true;
+        boolean flagQSA = true;
+        List<String> listCh = new ArrayList<String>();
+        char[] count = line.toCharArray();
+        for (int i = 0; i < count.length; i++) {
 
-            switch (count[i]){
-                case '1':listCh.add("壹");break;
-                case '2':listCh.add("贰");break;
-                case '3':listCh.add("叁");break;
-                case '4':listCh.add("肆");break;
-                case '5':listCh.add("伍");break;
-                case '6':listCh.add("陆");break;
-                case '7':listCh.add("柒");break;
-                case '8':listCh.add("捌");break;
-                case '9':listCh.add("玖");break;
+            switch (count[i]) {
+                case '1':
+                    listCh.add("壹");
+                    break;
+                case '2':
+                    listCh.add("贰");
+                    break;
+                case '3':
+                    listCh.add("叁");
+                    break;
+                case '4':
+                    listCh.add("肆");
+                    break;
+                case '5':
+                    listCh.add("伍");
+                    break;
+                case '6':
+                    listCh.add("陆");
+                    break;
+                case '7':
+                    listCh.add("柒");
+                    break;
+                case '8':
+                    listCh.add("捌");
+                    break;
+                case '9':
+                    listCh.add("玖");
+                    break;
                 case '0':
-                    if (i<count.length-1&&count[i+1]=='0'){
-                        flagQSA=false;
+                    if (i < count.length - 1 && count[i + 1] == '0') {
+                        flagQSA = false;
                         break;
 
                     }
-                    if (i==count.length-1&&count[i]=='0'){
-                        flagQSA=false;
+                    if (i == count.length - 1 && count[i] == '0') {
+                        flagQSA = false;
                         break;
 
                     }
-                    listCh.add("零");break;
+//                    if (i<count.length-1&&count[i]=='0'&&count[i+1]!='0'&&count[i-1]!='0'){
+//                        flagQSA=false;
+//                        break;
+//
+//                    }
+                    listCh.add("零");
+                    break;
 
             }
-            if (count.length>10&&flagBY==true&&flagQSA==true){
+            if (count.length == 1 && count[0] == '0') {
+                listCh.add("零");
+            }
+
+            if (count.length > 10 && flagBY == true && flagQSA == true) {
                 listCh.add("百");
-                flagBY=false;
+                flagBY = false;
                 continue;
             }
-            if (count.length>9&&flagSY==true&&flagQSA==true){
+            if (count.length > 9 && flagSY == true && flagQSA == true) {
                 listCh.add("拾");
-                flagSY=false;
+                flagSY = false;
                 continue;
             }
-            if (count.length>8&&flagY==true&&flagQSA==true){
+            if (count.length > 8 && flagY == true && flagQSA == true) {
                 listCh.add("亿");
-                flagY=false;
+                flagY = false;
                 continue;
             }
-            if (count.length>7&&flagKW==true&&flagQSA==true){
+            if (count.length > 7 && flagKW == true && flagQSA == true) {
                 listCh.add("仟");
-                flagKW=false;
+                flagKW = false;
                 continue;
             }
-            if (count.length>6&&flagBW==true&&flagQSA==true){
+            if (count.length > 6 && flagBW == true && flagQSA == true) {
                 listCh.add("百");
-                flagBW=false;
+                flagBW = false;
                 continue;
             }
-            if (count.length>5&&flagSW==true&&flagQSA==true){
+            if (count.length > 5 && flagSW == true && flagQSA == true) {
                 listCh.add("拾");
-                flagSW=false;
+                flagSW = false;
                 continue;
             }
-            if (count.length>4&&flagW==true&&flagQSA==true){
+            if (count.length > 4 && flagW == true && flagQSA == true) {
                 listCh.add("万");
-                flagW=false;
+                flagW = false;
                 continue;
             }
-            if (count.length>3&&flagK==true&&flagQSA==true){
+            if (count.length > 3 && flagK == true && flagQSA == true) {
                 listCh.add("仟");
-                flagK=false;
+                flagK = false;
                 continue;
             }
-            if (count.length>2&&flagB==true&&flagQSA==true){
+            if (count.length > 2 && flagB == true && flagQSA == true) {
                 listCh.add("百");
-                flagB=false;
+                flagB = false;
                 continue;
             }
-            if (count.length>1&&flagS==true&&flagQSA==true){
+            if (count.length > 1 && flagS == true && flagQSA == true) {
                 listCh.add("拾");
-                flagS=false;
+                flagS = false;
                 continue;
             }
 
         }
         return result(listCh);
     }
-    public static  String result(List<String> S){
-        String s="";
-        for (String c:S){
-            s=s+c;
+
+    public static String result(List<String> S) {
+        String s = "";
+        for (String c : S) {
+            s = s + c;
         }
-        return s+"元整";
+        return s + "元整";
     }
 
 }
