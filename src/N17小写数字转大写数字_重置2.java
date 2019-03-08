@@ -34,7 +34,7 @@ public class N17小写数字转大写数字_重置2 {
      * 肆万零陆佰零柒元整
      * 捌拾玖亿元整
      */
-    public static void main(String []args) {
+    public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         String line;
         while (scan.hasNextLine()) {
@@ -87,6 +87,66 @@ public class N17小写数字转大写数字_重置2 {
 
             }
         }
+        for (int i = 0; i < listCh.size() - 3; ) {
+            if (listCh.get(0).equals(num0)
+                    && listCh.get(1).equals(num0)
+                    && listCh.get(2).equals(num0)) {
+
+                for (int j = i; j >= 3; j--) {
+                    listCh.remove(j);
+                }
+
+                continue;
+            }
+            if (listCh.get(i).equals(num0)
+                    && listCh.get(i + 1).equals(num0)
+                    && listCh.get(i + 2).equals(num0)
+                    && listCh.get(i + 3).equals(num0)
+                    && listCh.get(i + 4).equals(num0)
+                    && listCh.get(i + 5).equals(num0)) {
+                // 零零
+                for (int j = i + 3; j >= 3; j--) {
+                    listCh.remove(j);
+                }
+            } else if (listCh.get(i).equals(num10k)
+                    && listCh.get(i + 1).equals(num10k)
+                    && listCh.get(i + 2).equals(num10k)
+                    && listCh.get(i + 3).equals(num0)
+                    && listCh.get(i + 4).equals(num0)
+                    && listCh.get(i + 5).equals(num0)) {
+                // 万零
+                for (int j = i + 3; j >= 3; j--) {
+                    listCh.remove(j);
+                }
+            } else if (listCh.get(i).equals(num10m)
+                    && listCh.get(i + 1).equals(num10m)
+                    && listCh.get(i + 2).equals(num10m)
+                    && listCh.get(i + 3).equals(num0)
+                    && listCh.get(i + 4).equals(num0)
+                    && listCh.get(i + 5).equals(num0)) {
+                // 亿零
+                for (int j = i + 3; j >= 3; j--) {
+                    listCh.remove(j);
+                }
+            } else if (listCh.get(i).equals(num10k)
+                    && listCh.get(i + 1).equals(num10k)
+                    && listCh.get(i + 2).equals(num10k)
+                    && listCh.get(i + 3).equals(num10m)
+                    && listCh.get(i + 4).equals(num10m)
+                    && listCh.get(i + 5).equals(num10m)) {
+                // 万亿
+                for (int j = i; j >= 3; j--) {
+                    listCh.remove(j);
+                }
+            } else
+                i = i + 3;
+        }
+
+//        for (int i = listCh.size() - 1; i >= 2; i = i - 3)
+//            cout << listCh[i - 2] << listCh[i - 1] << listCh[i];
+//        cout << "元整" << endl;
+
+
         return result(listCh);
     }
 
