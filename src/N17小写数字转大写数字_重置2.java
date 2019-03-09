@@ -50,12 +50,13 @@ public class N17小写数字转大写数字_重置2 {
     private static String solution(String line) {
         // 在此处理单行数据
         List<String> listCh = new ArrayList<String>();
+        List<Character> listCc = new ArrayList<Character>();
         char[] count = line.toCharArray();
 //        long number =Long.valueOf(line);
 //        System.out.println(number);
 
 
-        String num0 = "零", num10k = "万", num10m = "亿";
+        char num0 = '零', num10k = '万', num10m = '亿';
         String[] num = {"零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"};
         if (count.length == 1 && count[0] == '0') {
             listCh.add("0");
@@ -87,70 +88,73 @@ public class N17小写数字转大写数字_重置2 {
 
             }
         }
-//        for (int i = 0; i < listCh.size() - 3; ) {
-//            if (listCh.get(0).equals(num0)
-//                    && listCh.get(1).equals(num0)
-//                    && listCh.get(2).equals(num0)) {
-//
-//                for (int j = i; j < 3; j++) {
-//                    listCh.remove(j);
-//                }
-//
-//                continue;
-//            }
-//            if (listCh.get(i).equals(num0)
-//                    && listCh.get(i + 1).equals(num0)
-//                    && listCh.get(i + 2).equals(num0)
-//                    && listCh.get(i + 3).equals(num0)
-//                    && listCh.get(i + 4).equals(num0)
-//                    && listCh.get(i + 5).equals(num0)) {
-//                // 零零
-//                for (int j = i + 3; j < 3; j++) {
-//                    listCh.remove(j);
-//                }
-//            } else if (listCh.get(i).equals(num10k)
-//                    && listCh.get(i + 1).equals(num10k)
-//                    && listCh.get(i + 2).equals(num10k)
-//                    && listCh.get(i + 3).equals(num0)
-//                    && listCh.get(i + 4).equals(num0)
-//                    && listCh.get(i + 5).equals(num0)) {
-//                // 万零
-//                for (int j = i + 3; j < 3; j++) {
-//                    listCh.remove(j);
-//                }
-//            } else if (listCh.get(i).equals(num10m)
-//                    && listCh.get(i + 1).equals(num10m)
-//                    && listCh.get(i + 2).equals(num10m)
-//                    && listCh.get(i + 3).equals(num0)
-//                    && listCh.get(i + 4).equals(num0)
-//                    && listCh.get(i + 5).equals(num0)) {
-//                // 亿零
-//                for (int j = i + 3; j < 3; j++) {
-//                    listCh.remove(j);
-//                }
-//            } else if (listCh.get(i).equals(num10k)
-//                    && listCh.get(i + 1).equals(num10k)
-//                    && listCh.get(i + 2).equals(num10k)
-//                    && listCh.get(i + 3).equals(num10m)
-//                    && listCh.get(i + 4).equals(num10m)
-//                    && listCh.get(i + 5).equals(num10m)) {
-//                // 万亿
-//                for (int j = i + 3; j < 3; j++) {
-//                    listCh.remove(j);
-//                }
-//            } else
-//                i = i + 3;
+        String str = result(listCh);
+        for (char c : str.toCharArray()) {
+            listCc.add(c);
+        }
+        for (int i = 0; i < listCc.size() - 3; ) {
+            if (listCc.get(0).equals(num0)
+                    && listCc.get(1).equals(num0)
+                    && listCc.get(2).equals(num0)) {
+
+                for (int j = i; j < 3; j++) {
+                    listCh.remove(j);
+                }
+
+                continue;
+            }
+            if (listCc.get(i).equals(num0)
+                    && listCc.get(i + 1).equals(num0)
+                    && listCc.get(i + 2).equals(num0)
+                    && listCc.get(i + 3).equals(num0)
+                    && listCc.get(i + 4).equals(num0)
+                    && listCc.get(i + 5).equals(num0)) {
+                // 零零
+                for (int j = i + 3; j < 3; j++) {
+                    listCc.remove(j);
+                }
+            } else if (listCc.get(i).equals(num10k)
+                    && listCc.get(i + 1).equals(num10k)
+                    && listCc.get(i + 2).equals(num10k)
+                    && listCc.get(i + 3).equals(num0)
+                    && listCc.get(i + 4).equals(num0)
+                    && listCc.get(i + 5).equals(num0)) {
+                // 万零
+                for (int j = i + 3; j < 3; j++) {
+                    listCc.remove(j);
+                }
+            } else if (listCc.get(i).equals(num10m)
+                    && listCc.get(i + 1).equals(num10m)
+                    && listCc.get(i + 2).equals(num10m)
+                    && listCc.get(i + 3).equals(num0)
+                    && listCc.get(i + 4).equals(num0)
+                    && listCc.get(i + 5).equals(num0)) {
+                // 亿零
+                for (int j = i + 3; j < 3; j++) {
+                    listCc.remove(j);
+                }
+            } else if (listCc.get(i).equals(num10k)
+                    && listCc.get(i + 1).equals(num10k)
+                    && listCc.get(i + 2).equals(num10k)
+                    && listCc.get(i + 3).equals(num10m)
+                    && listCc.get(i + 4).equals(num10m)
+                    && listCc.get(i + 5).equals(num10m)) {
+                // 万亿
+                for (int j = i + 3; j < 3; j++) {
+                    listCc.remove(j);
+                }
+            } else
+                i = i + 3;
+        }
+
+//        for (int i = listCc.size() - 1; i >= 2; i = i - 3){
+//           System.out.print(listCc.get(i - 2) + listCc.get(i-1) + listCc.get(i));
 //        }
-//
-//        for (int i = listCh.size() - 1; i >= 2; i = i - 3){
-//           System.out.print(listCh.get(i - 2) + listCh.get(i-1) + listCh.get(i));
-//        }
-//        listCh.add("元整");
+        //  listCc.add("元整");
+        System.out.println(listCc);
 
-
-        System.out.println(listCh);
-
-        return result(listCh);
+        //return result(listCh);
+        return "";
     }
 
     public static String result(List<String> list) {
@@ -163,7 +167,6 @@ public class N17小写数字转大写数字_重置2 {
                 s.append(switchs(list.get(i).toCharArray()));
             }
         }
-        System.out.println(s);
         return s + "元整";
     }
 
