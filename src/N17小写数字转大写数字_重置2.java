@@ -148,30 +148,29 @@ public class N17小写数字转大写数字_重置2 {
 //        listCh.add("元整");
 
 
-        //    System.out.println(listCh);
+        System.out.println(listCh);
 
         return result(listCh);
     }
 
     public static String result(List<String> list) {
         StringBuilder s = new StringBuilder();
-        char c[];
+        char[] c;
         for (int i = list.size() - 1; i >= 0; i--) {
             if (list.get(i).length() == 1) {
                 s.append(list.get(i));
             } else {
                 s.append(switchs(list.get(i).toCharArray()));
             }
-            s.append(list.get(i));
         }
+        System.out.println(s);
         return s + "元整";
     }
 
-    public static String switchs(char[] c) {
+    private static String switchs(char[] c) {
         char[] temp = {c[1], c[0]};
-
         //  System.out.println(c);
-        return temp.toString();
+        return String.valueOf(temp);
 
     }
 
