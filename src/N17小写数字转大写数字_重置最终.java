@@ -93,8 +93,14 @@ public class N17小写数字转大写数字_重置最终 {
         }
 
         System.out.println(listCc);
-
-        //return result(listCh);
+        for (int i = 0; i < listCc.size() - 2; i++) {
+            if (listCc.get(i).equals('零') && listCc.get(i + 1).equals('零')) {
+                listCc.remove(i);
+                listCc.remove(i + 1);
+            }
+        }
+        System.out.println(listCc);
+        //return result(listCh);38646
         return "";
     }
 
