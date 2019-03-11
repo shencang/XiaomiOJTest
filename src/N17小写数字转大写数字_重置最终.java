@@ -92,21 +92,76 @@ public class N17小写数字转大写数字_重置最终 {
             listCc.add(c);
         }
 
-        System.out.println(listCc);
-        for (int i = 0; i < listCc.size() - 2; i++) {
-            if (listCc.get(i).equals('零')
-                    && listCc.get(i + 1).equals('零')) {
-                listCc.remove(i);
-                listCc.remove(i + 1);
 
+        for (int i = 0; i < listCc.size() - 3; ) {
+            if (listCc.get(0).equals(num0)
+                    && listCc.get(1).equals(num0)
+                    && listCc.get(2).equals(num0)) {
+
+                for (int j = i; j < 3; j++) {
+                    listCh.remove(j);
+                }
+
+                continue;
             }
-            if (i > 1 && listCc.get(i - 1).equals('零') && listCc.get(i).equals('万')
-                    && listCc.get(i + 1).equals('零')) {
-                listCc.remove(i - 1);
-                listCc.remove(i);
-                listCc.remove(i + 1);
-            }
+            if (listCc.get(i).equals(num0)
+                    && listCc.get(i + 1).equals(num0)
+                    && listCc.get(i + 2).equals(num0)
+                    && listCc.get(i + 3).equals(num0)
+                    && listCc.get(i + 4).equals(num0)
+                    && listCc.get(i + 5).equals(num0)) {
+                // 零零
+                for (int j = i + 3; j < 3; j++) {
+                    listCc.remove(j);
+                }
+            } else if (listCc.get(i).equals(num10k)
+                    && listCc.get(i + 1).equals(num10k)
+                    && listCc.get(i + 2).equals(num10k)
+                    && listCc.get(i + 3).equals(num0)
+                    && listCc.get(i + 4).equals(num0)
+                    && listCc.get(i + 5).equals(num0)) {
+                // 万零
+                for (int j = i + 3; j < 3; j++) {
+                    listCc.remove(j);
+                }
+            } else if (listCc.get(i).equals(num10m)
+                    && listCc.get(i + 1).equals(num10m)
+                    && listCc.get(i + 2).equals(num10m)
+                    && listCc.get(i + 3).equals(num0)
+                    && listCc.get(i + 4).equals(num0)
+                    && listCc.get(i + 5).equals(num0)) {
+                // 亿零
+                for (int j = i + 3; j < 3; j++) {
+                    listCc.remove(j);
+                }
+            } else if (listCc.get(i).equals(num10k)
+                    && listCc.get(i + 1).equals(num10k)
+                    && listCc.get(i + 2).equals(num10k)
+                    && listCc.get(i + 3).equals(num10m)
+                    && listCc.get(i + 4).equals(num10m)
+                    && listCc.get(i + 5).equals(num10m)) {
+                // 万亿
+                for (int j = i + 3; j < 3; j++) {
+                    listCc.remove(j);
+                }
+            } else
+                i = i + 3;
         }
+        System.out.println(listCc);
+//        for (int i = 0; i < listCc.size() - 2; i++) {
+//            if (listCc.get(i).equals('零')
+//                    && listCc.get(i + 1).equals('零')) {
+//                listCc.remove(i);
+//                listCc.remove(i + 1);
+//
+//            }
+//            if (i > 1 && listCc.get(i - 1).equals('零') && listCc.get(i).equals('万')
+//                    && listCc.get(i + 1).equals('零')) {
+//                listCc.remove(i - 1);
+//                listCc.remove(i);
+//                listCc.remove(i + 1);
+//            }
+//        }
         System.out.println(listCc);
         //return result(listCh);38646
         return "";
