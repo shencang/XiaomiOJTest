@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class N18帮小学生排队 {
     /**
      * 描述
@@ -76,4 +78,26 @@ public class N18帮小学生排队 {
      * 输出样例
      * 5 0 7 0 5 2 6 1 4 4 7 1
      */
+
+    private static String solution(String line) {
+        // 在此处理单行数据
+        String[] arr = line.split(" ");
+
+
+        return arr[1];
+
+    }
+
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String line;
+        while (scan.hasNextLine()) {
+            line = scan.nextLine().trim();
+            System.out.println(solution(line));
+            System.out.println("n18");
+
+        }
+
+    }
 }
