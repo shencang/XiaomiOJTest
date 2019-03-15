@@ -103,37 +103,37 @@ public class N18帮小学生排队 {
         for (int i = 0; i < temp.length; i++) {
             switch (temp[i] % 10) {
                 case 0:
-                    number.add(temp[i]);
+                    number.add(0, temp[i]);
 //                    if (temp[i+1]%10==0&&temp[i]<temp[i+1]){
 //
 //                }
                     break;
                 case 1:
-                    number.add(temp[i]);
+                    number.add(1, temp[i]);
                     break;
                 case 2:
-                    number.add(temp[i]);
+                    number.add(2, temp[i]);
                     break;
                 case 3:
-                    number.add(temp[i]);
+                    number.add(3, temp[i]);
                     break;
                 case 4:
-                    number.add(temp[i]);
+                    number.add(4, temp[i]);
                     break;
                 case 5:
-                    number.add(temp[i]);
+                    number.add(5, temp[i]);
                     break;
                 case 6:
-                    number.add(temp[i]);
+                    number.add(6, temp[i]);
                     break;
                 case 7:
-                    number.add(temp[i]);
+                    number.add(7, temp[i]);
                     break;
                 case 8:
-                    number.add(temp[i]);
+                    number.add(8, temp[i]);
                     break;
                 case 9:
-                    number.add(temp[i]);
+                    number.add(9, temp[i]);
                     break;
                 default:
                     break;
