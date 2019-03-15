@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class N18帮小学生排队 {
@@ -82,7 +85,64 @@ public class N18帮小学生排队 {
     private static String solution(String line) {
         // 在此处理单行数据
         String[] arr = line.split(" ");
+        System.out.println(arr[0]);
+        int num = Integer.parseInt(arr[0]);
+        int[] temp = new int[num];
+        int count = 0;
+        List<Integer> number = new ArrayList<>();
 
+
+        for (int i = 1; i < num * 2; i += 2) {
+            //   System.out.println(arr[i]+" "+arr[i+1]);
+            temp[count] = Integer.parseInt(arr[i] + arr[i + 1]);
+            count++;
+        }
+//        for (int i :temp){
+//            System.out.println(i);
+//        }
+        for (int i = 0; i < temp.length; i++) {
+            switch (temp[i] % 10) {
+                case 0:
+                    number.add(temp[i]);
+//                    if (temp[i+1]%10==0&&temp[i]<temp[i+1]){
+//
+//                }
+                    break;
+                case 1:
+                    number.add(temp[i]);
+                    break;
+                case 2:
+                    number.add(temp[i]);
+                    break;
+                case 3:
+                    number.add(temp[i]);
+                    break;
+                case 4:
+                    number.add(temp[i]);
+                    break;
+                case 5:
+                    number.add(temp[i]);
+                    break;
+                case 6:
+                    number.add(temp[i]);
+                    break;
+                case 7:
+                    number.add(temp[i]);
+                    break;
+                case 8:
+                    number.add(temp[i]);
+                    break;
+                case 9:
+                    number.add(temp[i]);
+                    break;
+                default:
+                    break;
+
+
+            }
+        }
+        Collections.sort(number);
+        System.out.println(number);
 
         return arr[1];
 
