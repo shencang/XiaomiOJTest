@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -89,6 +90,7 @@ public class N18帮小学生排队 {
         int[] temp = new int[num];
         int count = 0;
         List<Integer> number = new ArrayList<>();
+        List<Integer> numberRe = new ArrayList<>();
 
 
         for (int i = 1; i < num * 2; i += 2) {
@@ -105,19 +107,18 @@ public class N18帮小学生排队 {
         }
         int tempa = 0;
 
+        Collections.sort(number);
         for (int i = 0; i < number.size(); i++) {
             for (int j = 0; j < number.size(); j++) {
-                if (number.get(j) % 10 >= i) {
-                    tempa = number.get(j);
-                    number.remove(j);
-                    number.add(tempa);
+                if (number.get(j) % 10 == i) {
+                    numberRe.add(number.get(j));
 //                    if (temp[i+1]%10==0&&temp[i]<temp[i+1]){
-//
                 }
             }
+
         }
 //        Collections.sort(number);
-        System.out.println(number);
+        System.out.println(numberRe);
 
         return arr[1];
 
