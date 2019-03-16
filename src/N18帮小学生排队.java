@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -100,48 +99,24 @@ public class N18帮小学生排队 {
 //        for (int i :temp){
 //            System.out.println(i);
 //        }
-        for (int i = 0; i < temp.length; i++) {
-            switch (temp[i] % 10) {
-                case 0:
-                    number.add(0, temp[i]);
+
+        for (int i : temp) {
+            number.add(i);
+        }
+        int tempa = 0;
+
+        for (int i = 0; i < number.size(); i++) {
+            for (int j = 0; j < number.size(); j++) {
+                if (number.get(j) % 10 >= i) {
+                    tempa = number.get(j);
+                    number.remove(j);
+                    number.add(tempa);
 //                    if (temp[i+1]%10==0&&temp[i]<temp[i+1]){
 //
-//                }
-                    break;
-                case 1:
-                    number.add(1, temp[i]);
-                    break;
-                case 2:
-                    number.add(2, temp[i]);
-                    break;
-                case 3:
-                    number.add(3, temp[i]);
-                    break;
-                case 4:
-                    number.add(4, temp[i]);
-                    break;
-                case 5:
-                    number.add(5, temp[i]);
-                    break;
-                case 6:
-                    number.add(6, temp[i]);
-                    break;
-                case 7:
-                    number.add(7, temp[i]);
-                    break;
-                case 8:
-                    number.add(8, temp[i]);
-                    break;
-                case 9:
-                    number.add(9, temp[i]);
-                    break;
-                default:
-                    break;
-
-
+                }
             }
         }
-        Collections.sort(number);
+//        Collections.sort(number);
         System.out.println(number);
 
         return arr[1];
