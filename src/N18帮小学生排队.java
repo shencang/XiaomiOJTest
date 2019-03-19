@@ -117,16 +117,16 @@ public class N18帮小学生排队 {
             }
         }
         count = 0;
-        for (int i = numberRe.size() - 1; i > 0; i--) {
-            for (int j = 0; j < numberRe.size(); j++) {
-                if (i == j) {
-                    count = numberRe.get(i) % 10;
-                    counts = numberRe.get(i);
-                    numberRe.remove(i);
-                    numberRe.add(count, counts);
-                }
-            }
-        }
+//        for (int i = numberRe.size() - 1; i > 0; i--) {
+//            for (int j = 0; j < numberRe.size(); j++) {
+//                if (numberRe.get(i) % 10 == j) {
+//                    count = numberRe.get(i) % 10;
+//                    counts = numberRe.get(i);
+//                    numberRe.remove(i);
+//                    numberRe.add(count, counts);
+//                }
+//            }
+//        }
 
 //        Collections.sort(number);
         System.out.println(numberRe);
