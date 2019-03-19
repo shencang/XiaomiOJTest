@@ -124,20 +124,25 @@ public class N18帮小学生排队_重置 {
         int tempK = 0;
         int tempH = 0;
         tempK = mPairs.get(i).getKind();
-        tempH = mPairs.get(i).getHigh();
         mPairs.get(i).setKind(mPairs.get(j).getKind());
         mPairs.get(j).setKind(tempK);
+
+        tempH = mPairs.get(i).getHigh();
         mPairs.get(i).setHigh(mPairs.get(j).getHigh());
         mPairs.get(j).setKind(tempH);
+
     }
 
     private static List<mPair> sortK(List<mPair> mPairs) {
 
         for (int i = 0; i < mPairs.size(); i++) {
+
             for (int j = 0; j < mPairs.size(); j++) {
                 if (mPairs.get(i).getKind() < mPairs.get(j).getKind()) {
                     exChange(mPairs, i, j);
                 }
+                System.out.print(mPairs.get(i).getKind() + " " + mPairs.get(j).getKind());
+
 
             }
         }

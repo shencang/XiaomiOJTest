@@ -9,7 +9,7 @@ public class N18帮小学生排队 {
      * 用一个数组表示一群正在排队的小学生，每个小学生用一对整数 H, K 来表示：H 表示这个小学生的身高，K 表示这个小学生前面应该有 K 个人的身高 >= 他。
      * 写一个算法，对给出的一组小学生计算出符合描述的正确排序。
      * 输入
-     *
+     * <p>
      * 输入为一组整数，以空格分隔：
      * 第 1 个数字表示小学生的数量 n；
      * 从第 2 个数字起，后续的数字两两一组，分别代表每个小学生的 H 和 K 的值：
@@ -17,67 +17,67 @@ public class N18帮小学生排队 {
      * H
      * 1
      * ​
-     *
-     *  K
+     * <p>
+     * K
      * 1
      * ​
-     *
-     *  H
+     * <p>
+     * H
      * 2
      * ​
-     *
-     *  K
+     * <p>
+     * K
      * 2
      * ​
-     *
+     * <p>
      * ⋯H
      * n
      * ​
-     *
-     *  K
+     * <p>
+     * K
      * n
      * ​
-     *
+     * <p>
      * .
-     *
+     * <p>
      * 输出
-     *
+     * <p>
      * 根据输入，按照题目要求对小学生进行排序，每个小学生对应的 H 和 K 值为一组，按组输出，数字间使用空格分隔。比如
      * H1′ K1′ H2′ K2′⋯Hn′ Kn′H_1&#x27;\text{ }K_1&#x27;\text{ }H_2&#x27;\text{ }K_2&#x27; \cdots H_n&#x27; \text{ }K_n&#x27;
      * H
      * 1
      * ′
      * ​
-     *
-     *  K
+     * <p>
+     * K
      * 1
      * ′
      * ​
-     *
-     *  H
+     * <p>
+     * H
      * 2
      * ′
      * ​
-     *
-     *  K
+     * <p>
+     * K
      * 2
      * ′
      * ​
-     *
+     * <p>
      * ⋯H
      * n
      * ′
      * ​
-     *
-     *  K
+     * <p>
+     * K
      * n
      * ′
      * ​
-     *
-     *
+     * <p>
+     * <p>
      * 输入样例
      * 6 7 0 4 4 7 1 5 0 6 1 5 2
-     *  复制样例
+     * 复制样例
      * 输出样例
      * 5 0 7 0 5 2 6 1 4 4 7 1
      */
@@ -88,7 +88,7 @@ public class N18帮小学生排队 {
         System.out.println(arr[0]);
         int num = Integer.parseInt(arr[0]);
         int[] temp = new int[num];
-        int count = 0;
+        int count = 0, counts = 0;
         List<Integer> number = new ArrayList<>();
         List<Integer> numberRe = new ArrayList<>();
 
@@ -115,7 +115,17 @@ public class N18帮小学生排队 {
 //                    if (temp[i+1]%10==0&&temp[i]<temp[i+1]){
                 }
             }
-
+        }
+        count = 0;
+        for (int i = numberRe.size() - 1; i > 0; i--) {
+            for (int j = 0; j < numberRe.size(); j++) {
+                if (i == j) {
+                    count = numberRe.get(i) % 10;
+                    counts = numberRe.get(i);
+                    numberRe.remove(i);
+                    numberRe.add(count, counts);
+                }
+            }
         }
 
 //        Collections.sort(number);
