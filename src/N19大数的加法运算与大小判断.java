@@ -65,10 +65,37 @@ public class N19大数的加法运算与大小判断 {
         if (flagAdd) {
             char[] num1 = temp[0].toCharArray();
             char[] num2 = temp[1].toCharArray();
+            int longth = whichOneLong(temp);
+            int number = 0;
+            for (int i = maxLong(temp) - 1; i > 0; i++) {
+
+                if ((num1[i] + num2[i]) > 10) {
+                    number = (num1[i] + num2[i]) % 10;
+//                    if (){
+//
+//                    }
+                }
+            }
         }
 
 
         return "1";
+    }
+
+    private static int maxLong(String[] temp) {
+        if (temp[0].length() > temp[1].length()) {
+            return temp[0].length();
+        } else {
+            return temp[0].length();
+        }
+    }
+
+    private static int whichOneLong(String[] temp) {
+        if (temp[0].length() > temp[1].length()) {
+            return 0;
+        } else {
+            return 1;
+        }
     }
 
 
