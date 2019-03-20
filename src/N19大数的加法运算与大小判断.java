@@ -28,16 +28,45 @@ public class N19大数的加法运算与大小判断 {
     private static String solution(String line) {
         // 在此处理单行数据
         String[] arrAdd = line.split("\\+");
-        String[] arrL = line.split("<");
-        String[] arrM = line.split(">");
+        String[] arrL = line.split(">");
+        String[] arrM = line.split("<");
         String[] temp;
+        boolean flagAdd = false, flagL = false, flagM = false;
         if (arrAdd.length == 2) {
             temp = arrAdd;
+            flagAdd = true;
         } else if (arrL.length == 2) {
             temp = arrL;
+            flagL = true;
         } else {
             temp = arrM;
+            flagM = true;
         }
+
+        if (flagL) {
+            if (temp[0].length() > temp[1].length()) {
+                return "Y";
+            } else if (temp[0].length() < temp[1].length()) {
+                return "N";
+            } else {
+                //同位比较
+            }
+        }
+
+        if (flagM) {
+            if (temp[0].length() < temp[1].length()) {
+                return "Y";
+            } else if (temp[0].length() > temp[1].length()) {
+                return "N";
+            } else {
+                //同位比较
+            }
+        }
+        if (flagAdd) {
+            char[] num1 = temp[0].toCharArray();
+            char[] num2 = temp[1].toCharArray();
+        }
+
 
         return "1";
     }
