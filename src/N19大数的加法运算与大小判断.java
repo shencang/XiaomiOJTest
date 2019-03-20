@@ -72,6 +72,7 @@ public class N19大数的加法运算与大小判断 {
                 if ((num1[i] + num2[i]) > 10) {
                     number = (num1[i] + num2[i]) % 10;
 //                    if (){
+                    // 进位处理
 //
 //                    }
                 }
