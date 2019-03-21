@@ -50,6 +50,22 @@ public class N19大数的加法运算与大小判断 {
                 return "N";
             } else {
                 //同位比较
+                char[] num1 = temp[0].toCharArray();
+                char[] num2 = temp[1].toCharArray();
+                for (int i = 0; i < temp[0].length(); i++) {
+                    if (Integer.parseInt(String.valueOf(num1[0]))
+                            >
+                            Integer.parseInt(String.valueOf(num1[1]))) {
+                        return "Y";
+
+                    } else if (Integer.parseInt(String.valueOf(num1[0]))
+                            ==
+                            Integer.parseInt(String.valueOf(num1[1]))) {
+                        continue;
+                    } else {
+                        return "Y";
+                    }
+                }
             }
         }
 
@@ -60,6 +76,22 @@ public class N19大数的加法运算与大小判断 {
                 return "N";
             } else {
                 //同位比较
+                char[] num1 = temp[0].toCharArray();
+                char[] num2 = temp[1].toCharArray();
+                for (int i = 0; i < temp[0].length(); i++) {
+                    if (Integer.parseInt(String.valueOf(num1[0]))
+                            <
+                            Integer.parseInt(String.valueOf(num1[1]))) {
+                        return "Y";
+
+                    } else if (Integer.parseInt(String.valueOf(num1[0]))
+                            ==
+                            Integer.parseInt(String.valueOf(num1[1]))) {
+                        continue;
+                    } else {
+                        return "Y";
+                    }
+                }
             }
         }
         if (flagAdd) {
@@ -74,9 +106,9 @@ public class N19大数的加法运算与大小判断 {
                     num1[i] = (char) ((Integer.parseInt(String.valueOf(num1[i]))
                             + Integer.parseInt(String.valueOf(num2[i]))) % 10 + '0');
                     num1[i - 1] = num1[i - 1]++;
-                    
-                    //进位处理
 
+                    //还有点问题，等待修改
+                    //进位处理
 
 
                 }
