@@ -101,22 +101,34 @@ public class N19大数的加法运算与大小判断 {
             int number = 0;
             for (int i = longth - 1; i > 0; i++) {
 
-                if ((Integer.parseInt(String.valueOf(num1[i]))
-                        + Integer.parseInt(String.valueOf(num2[i])) > 10)) {
-                    num1[i] = (char) ((Integer.parseInt(String.valueOf(num1[i]))
-                            + Integer.parseInt(String.valueOf(num2[i]))) % 10 + '0');
-                    num1[i - 1] = num1[i - 1]++;
+                if (i != num2.length - 1) {
+                    if ((Integer.parseInt(String.valueOf(num1[i]))
+                            + Integer.parseInt(String.valueOf(num2[i])) > 10)) {
+                        num1[i] = (char) ((Integer.parseInt(String.valueOf(num1[i]))
+                                + Integer.parseInt(String.valueOf(num2[i]))) % 10 + '0');
+                        num1[i - 1] = num1[i - 1]++;
+                        //还有点问题，等待修改
+                        //进位处理
 
-                    //还有点问题，等待修改
-                    //进位处理
 
-
+                    }
+                } else {
+                    return charArrToString(num1);
                 }
+
             }
         }
 
 
         return "1";
+    }
+
+    private static String charArrToString(char[] num1) {
+        String res = "";
+        for (char i : num1) {
+            res += i;
+        }
+        return res;
     }
 
     private static char[] minCharArr(String[] temp) {
