@@ -50,22 +50,7 @@ public class N19大数的加法运算与大小判断 {
                 return "N";
             } else {
                 //同位比较
-                char[] num1 = temp[0].toCharArray();
-                char[] num2 = temp[1].toCharArray();
-                for (int i = 0; i < temp[0].length(); i++) {
-                    if (Integer.parseInt(String.valueOf(num1[i]))
-                            >
-                            Integer.parseInt(String.valueOf(num2[i]))) {
-                        return "Y";
-
-                    } else if (Integer.parseInt(String.valueOf(num1[i]))
-                            ==
-                            Integer.parseInt(String.valueOf(num2[i]))) {
-                        continue;
-                    } else {
-                        return "N";
-                    }
-                }
+                return sameLongCamp(temp, 'L');
             }
         }
 
@@ -76,34 +61,16 @@ public class N19大数的加法运算与大小判断 {
                 return "N";
             } else {
                 //同位比较
-                char[] num1 = temp[0].toCharArray();
-                char[] num2 = temp[1].toCharArray();
-                for (int i = 0; i < temp[0].length(); i++) {
-                    if (Integer.parseInt(String.valueOf(num1[i]))
-                            <
-                            Integer.parseInt(String.valueOf(num2[i]))) {
-                        return "Y";
-
-                    } else if (Integer.parseInt(String.valueOf(num1[i]))
-                            ==
-                            Integer.parseInt(String.valueOf(num2[i]))) {
-                        continue;
-                    } else {
-                        return "N";
-                    }
-                }
+                return sameLongCamp(temp, 'M');
             }
         }
         if (flagAdd) {
             char[] num1 = maxCharArr(temp);
-            char[] num2 = minCharArr(temp, num1);
+            char[] num2 = CampForAdd(temp, num1);
             int longth = num1.length;
             int number = 0;
-            for (int i = longth - 1; i >= 0; i--) {
-                System.out.print(num1[i]);
-
-
-//                if (i != num2.length - 1) {
+//            for (int i = longth - 1; i >= 0; i--) {
+//                if (i >= num2.length - 1) {
 //                    if ((Integer.parseInt(String.valueOf(num1[i]))
 //                            + Integer.parseInt(String.valueOf(num2[i])) > 10)) {
 //                        num1[i] = (char) ((Integer.parseInt(String.valueOf(num1[i]))
@@ -111,46 +78,67 @@ public class N19大数的加法运算与大小判断 {
 //                        num1[i - 1] = num1[i - 1]++;
 //                        //还有点问题，等待修改
 //                        //进位处理
-//                        System.out.print(num1);
 //
 //
+//                    }
+//                    else {
+//                        num1[i] = (char) ((Integer.parseInt(String.valueOf(num1[i]))
+//                                + Integer.parseInt(String.valueOf(num2[i])))  + '0');
 //                    }
 //                } else {
 //                    return charArrToString(num1);
 //                }
-
-            }
-            System.out.println();
-            for (int i = num2.length - 1; i >= 0; i--) {
-                System.out.print(num2[i]);
-
-
-            }
-            System.out.println();
+//
+//            }
         }
 
 
         return "1";
     }
 
-    private static String sameLongCamp(String[] temp) {
+    private static String sameLongCamp(String[] temp, char flag) {
         char[] num1 = temp[0].toCharArray();
         char[] num2 = temp[1].toCharArray();
         for (int i = 0; i < temp[0].length(); i++) {
-            if (Integer.parseInt(String.valueOf(num1[0]))
-                    >
-                    Integer.parseInt(String.valueOf(num1[1]))) {
-                return "Y";
+            if (flag == 'L') {
+                if (Integer.parseInt(String.valueOf(num1[i]))
+                        >
+                        Integer.parseInt(String.valueOf(num2[i]))) {
+                    return "Y";
 
-            } else if (Integer.parseInt(String.valueOf(num1[0]))
-                    ==
-                    Integer.parseInt(String.valueOf(num1[1]))) {
-                continue;
-            } else {
-                return "Y";
+                } else if (Integer.parseInt(String.valueOf(num1[i]))
+                        ==
+                        Integer.parseInt(String.valueOf(num2[i]))) {
+                    continue;
+                } else {
+                    return "N";
+                }
+            } else if (flag == 'M') {
+                if (Integer.parseInt(String.valueOf(num1[i]))
+                        <
+                        Integer.parseInt(String.valueOf(num2[i]))) {
+                    return "Y";
+
+                } else if (Integer.parseInt(String.valueOf(num1[i]))
+                        ==
+                        Integer.parseInt(String.valueOf(num2[i]))) {
+                    continue;
+                } else {
+                    return "N";
+                }
             }
         }
-        return "";
+        return "err";
+
+    }
+
+    private static char[] CampForAdd(String[] temp, char[] other) {
+
+        if (temp[0].toCharArray() == other) {
+            return temp[1].toCharArray();
+        } else {
+            return temp[0].toCharArray();
+        }
     }
 
     private static String charArrToString(char[] num1) {
@@ -158,15 +146,8 @@ public class N19大数的加法运算与大小判断 {
         for (char i : num1) {
             res += i;
         }
-        return res;
-    }
 
-    private static char[] minCharArr(String[] temp, char[] other) {
-        if (temp[0].length() < temp[1].length() && temp[0].toCharArray() != other) {
-            return temp[0].toCharArray();
-        } else {
-            return temp[1].toCharArray();
-        }
+        return res;
     }
 
     private static char[] maxCharArr(String[] temp) {
