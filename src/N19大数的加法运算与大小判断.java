@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -67,33 +68,49 @@ public class N19大数的加法运算与大小判断 {
         if (flagAdd) {
             char[] num1 = maxCharArr(temp);
             char[] num2 = CampForAdd(temp, num1);
-            int longth = num1.length;
-            int number = 0;
-//            for (int i = longth - 1; i >= 0; i--) {
-//                if (i >= num2.length - 1) {
-//                    if ((Integer.parseInt(String.valueOf(num1[i]))
-//                            + Integer.parseInt(String.valueOf(num2[i])) > 10)) {
-//                        num1[i] = (char) ((Integer.parseInt(String.valueOf(num1[i]))
-//                                + Integer.parseInt(String.valueOf(num2[i]))) % 10 + '0');
-//                        num1[i - 1] = num1[i - 1]++;
-//                        //还有点问题，等待修改
-//                        //进位处理
-//
-//
-//                    }
-//                    else {
-//                        num1[i] = (char) ((Integer.parseInt(String.valueOf(num1[i]))
-//                                + Integer.parseInt(String.valueOf(num2[i])))  + '0');
-//                    }
-//                } else {
-//                    return charArrToString(num1);
-//                }
-//
-//            }
+            return getAddSolution(charArrToString(num1), charArrToString(num2));
         }
 
+        return "";
+    }
 
-        return "1";
+    private static String getAddSolution(String numberA, String numberB) {
+        int lengthA = numberA.length();
+        int lengthB = numberB.length();
+        int[] a = new int[lengthA];
+        int[] b = new int[lengthA];
+        for (int i = 0; i < lengthA; i++) {
+            a[i] = Integer.parseInt(String.valueOf(numberA.charAt(i)));
+            if (i < lengthB) {
+                if (i < lengthA - lengthB) {
+                    b[i] = 0;
+                    b[i + lengthA - lengthB] = Integer.parseInt(String.valueOf(numberB.charAt(i)));
+                }
+            }
+        }
+        return getAddNumber(a, b);
+    }
+
+    private static String getAddNumber(int[] a, int[] b) {
+        int[] result = new int[a.length];
+        for (int i = 0; i < b.length; i++) {
+            result[i] = a[i] + b[i];
+        }
+        StringBuffer sb;
+        sb = new StringBuffer();
+        for (int i = b.length - 1; i >= 1; i--) {
+            if (result[i] >= 10) {
+                result[i - 1] += 1;
+                result[i] -= 10;
+            }
+            sb.append(result[i]);
+        }
+        if (result[0] >= 10) {
+            sb.append(result[0] - 10).append("1");
+        } else {
+            sb.append(result[0]);
+        }
+        return sb.reverse().toString();
     }
 
     private static String sameLongCamp(String[] temp, char flag) {
@@ -133,8 +150,7 @@ public class N19大数的加法运算与大小判断 {
     }
 
     private static char[] CampForAdd(String[] temp, char[] other) {
-
-        if (temp[0].toCharArray() == other) {
+        if (Arrays.equals(temp[0].toCharArray(), other)) {
             return temp[1].toCharArray();
         } else {
             return temp[0].toCharArray();
@@ -165,7 +181,7 @@ public class N19大数的加法运算与大小判断 {
         while (scan.hasNextLine()) {
             line = scan.nextLine().trim();
             System.out.println(solution(line));
-            System.out.println("n19");
+            //System.out.println("n19");
 
         }
 
