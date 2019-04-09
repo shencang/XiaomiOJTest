@@ -5,3 +5,5 @@
 ######  描述已经全部补上。
 
 ###### 我的python目录也会更新一点题目
+[直达链接](https://github.com/shencang/pythonPractice/tree/master/学习记录/小米oj
+)
