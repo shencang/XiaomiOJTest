@@ -1,3 +1,5 @@
+package 通过的项目;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

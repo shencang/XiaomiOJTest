@@ -1,3 +1,5 @@
+package 废弃不使用的项目;
+
 import java.util.Arrays;
 import java.util.Scanner;
 

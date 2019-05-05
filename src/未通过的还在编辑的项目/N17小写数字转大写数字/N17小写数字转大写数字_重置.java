@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
+package 未通过的还在编辑的项目.N17小写数字转大写数字;
+
 import java.util.Scanner;
 
 public class N17小写数字转大写数字_重置 {

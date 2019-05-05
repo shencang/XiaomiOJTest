@@ -1,3 +1,5 @@
+package 通过的项目;
+
 import java.util.*;
 
 public class N15和为零的三元组 {
@@ -27,37 +29,36 @@ public class N15和为零的三元组 {
             numList.add(Integer.parseInt(i));
         }
         Collections.sort(numList);
-       // System.out.println(numList);
+        // System.out.println(numList);
         //-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6正确6，结果11，待修改
         int countx = 0;
         int county = 0;
         int countz = 0;
-            for (int i :numList){
-                countx++;
-                for (int j:numList){
-                    county++;
-                    for (int k:numList) {
-                        countz++;
-                        if ((i + j + k) == 0&&countx!=county&&countx!=countz&&county!=countz) {
-                            zeroList.add(i);
-                            zeroList.add(j);
-                            zeroList.add(k);
-                           // System.out.println(countx+county+countz);
-                            Collections.sort(zeroList);
-                            resultList.add(zeroList);
-                            zeroList = new ArrayList<>();
-                            //zeroList.clear();
-                        }
+        for (int i :numList){
+            countx++;
+            for (int j:numList){
+                county++;
+                for (int k:numList) {
+                    countz++;
+                    if ((i + j + k) == 0&&countx!=county&&countx!=countz&&county!=countz) {
+                        zeroList.add(i);
+                        zeroList.add(j);
+                        zeroList.add(k);
+                        // System.out.println(countx+county+countz);
+                        Collections.sort(zeroList);
+                        resultList.add(zeroList);
+                        zeroList = new ArrayList<>();
+                        //zeroList.clear();
                     }
-                    countz=0;
                 }
-                county=0;
+                countz=0;
             }
-            countx=0;
-            resultList= removeDuplicateWithOrder(resultList);
-            //System.out.println(resultList);
+            county=0;
+        }
+        countx=0;
+        resultList= removeDuplicateWithOrder(resultList);
+        //System.out.println(resultList);
         return Integer.toString(resultList.size());
-
 
 
     }

@@ -1,4 +1,7 @@
-import java.util.*;
+package 通过的项目;
+
+import java.util.Scanner;
+import java.util.Stack;
 public class N16四则运算 {
     //新设备测试
     /**

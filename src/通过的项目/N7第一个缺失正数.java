@@ -1,44 +1,74 @@
+package 通过的项目;
+
 /**
- * 描述
- * 给出一个有序数列随机旋转之后的数列，如原有序数列为：[0,1,2,4,5,6,7] ，旋转之后为[4,5,6,7,0,1,2]。 假定数列中无重复元素，且数列长度为奇数。 求出旋转数列的中间值。如数列[4,5,6,7,0,1,2]的中间值为4。
- * <p>
- * 输入
- * 4,5,6,7,0,1,2
- * <p>
- * 输出
- * 4
- * <p>
- * 输入样例
- * 1
- * 1,2,3
- * 4,5,6,7,0,1,2
- * 12,13,14,5,6,7,8,9,10
- * <p>
- * 输出样例
- * 1
- * 2
- * 4
- * 9
+
+ 描述
+给出一个无序的数列，找出其中缺失的第一个正数，要求复杂度为 O(n) 如：[1,2,0]，第一个缺失为3。 如：[3,4,-1,1]，第一个缺失为2。
+
+ 输入
+1,2,0
+
+ 输出
+3
+
+ 输入样例
+1,2,0
+3,4,-1,1
+-1,-3,-5
+1,2,3
+-1,-10,0
+
+ 输出样例
+3
+2
+1
+4
+1
  */
-public class N5找出旋转有序数列的中间值 {
-    //运行时间打败了 100% 的 Java 玩家！堆排序666
+public class N7第一个缺失正数 {
+
     private static String solution(String line) {
-        // 在此处理单行数据
+
         String[] array = line.split(",");
+        String result = "";
         int count = 0;
         int a[] = new int[array.length];
+        String RETURN;
         for (int i = 0; i < array.length; i++) {
+
             a[i] = Integer.parseInt(array[i]);
 
+
+            //int a = Integer.parseInt(array[i]);
+            //count = count + a;
         }
         a = HeapSort(a, a.length);
 
-        count = a[a.length / 2];
-        String result = Integer.toString(count);
-        // 返回处理后的结果
+
+        for (int i = 0; i < array.length - 1; i++) {
+            if (((a[i] + 1) == a[i + 1]) && (a[a.length - 1] - 1 == a[a.length - 2]) && a[a.length - 1] >= 0) {
+                result = Integer.toString(a[a.length - 1] + 1);
+
+                break;
+
+            } else if (a[a.length - 1] <= 0) {
+                result = Integer.toString(1);
+
+                break;
+
+            } else if (a[i] + 1 != 0) {
+                result = Integer.toString(a[i] + 1);
+
+                break;
+
+
+            }
+
+        }
+
+
+        //result = Integer.toString(count + 1);
         return result;
-        // 返回处理后的结果
-        // return ans;
     }
 
     /*返回父节点*/
@@ -100,11 +130,12 @@ public class N5找出旋转有序数列的中间值 {
         return A;
     }
 
+
     public static void main(String[] args) {
 
 
-        System.out.println(solution("12,13,14,5,6,7,8,9,10"));
-        //
+        System.out.println(solution("2,3,1"));
+
 
     }
 }

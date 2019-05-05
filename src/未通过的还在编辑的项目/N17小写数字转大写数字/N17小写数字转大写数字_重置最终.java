@@ -1,3 +1,5 @@
+package 未通过的还在编辑的项目.N17小写数字转大写数字;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

@@ -1,3 +1,4 @@
+package 通过的项目;
 
 /**
  * 描述
@@ -17,21 +18,13 @@
  * 1231231237812739878951331231231237812739878951331231231237812650365639018918853110413950365639018918853110413950365639018918853110413950357
  * 1231231237812739878951331231231237812739878951331231231237812739878620099998762187260121048668768770
  */
-public class N3大数相减版本1提交版 {
-    public static void main(String[] args) {
-        System.out.println(solution("111118888888111 - 3333888888888333"));
-
-
-    }
-
-    private static String solution(String line) {
-        // 在此处理单行数据
-        String[] array = line.split(" - ");
-        int a = 0;
-        int count = 0;
-        char[] as = new StringBuffer(array[0]).reverse().toString().toCharArray();
-        char[] b = new StringBuffer(array[1]).reverse().toString().toCharArray();
-        int lenA = as.length;
+public class N3大数相减版本2 {
+    public static String bigNumberSub(String f, String s) {
+        //System.out.print("减法:" + f + "-" + s + "=");
+        // 将字符串翻转并转换成字符数组
+        char[] a = new StringBuffer(f).reverse().toString().toCharArray();
+        char[] b = new StringBuffer(s).reverse().toString().toCharArray();
+        int lenA = a.length;
         int lenB = b.length;
         // 找到最大长度
         int len = lenA > lenB ? lenA : lenB;
@@ -43,16 +36,16 @@ public class N3大数相减版本1提交版 {
             sign = '-';
         } else if (lenA == lenB) {
             int i = lenA - 1;
-            while (i > 0 && as[i] == b[i]) {
+            while (i > 0 && a[i] == b[i]) {
                 i--;
             }
-            if (as[i] < b[i]) {
+            if (a[i] < b[i]) {
                 sign = '-';
             }
         }
         // 计算结果集，如果最终结果为正，那么就a-b否则的话就b-a
         for (int i = 0; i < len; i++) {
-            int aint = i < lenA ? (as[i] - '0') : 0;
+            int aint = i < lenA ? (a[i] - '0') : 0;
             int bint = i < lenB ? (b[i] - '0') : 0;
             if (sign == '+') {
                 result[i] = aint - bint;
@@ -88,11 +81,14 @@ public class N3大数相减版本1提交版 {
             sb.append("0");
         }
         // 返回值
-
+        // System.out.println(sb.toString());
         return sb.toString();
-
-
     }
 
-
+    public static void main(String[] args) {
+        N3大数相减版本2 largeCalculate = new N3大数相减版本2();
+        String a = "999999999999999993";
+        String b = "288888888888888";
+        System.out.println(bigNumberSub(a, b));
+    }
 }
